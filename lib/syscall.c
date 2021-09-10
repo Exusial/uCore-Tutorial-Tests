@@ -157,3 +157,7 @@ int unlink(char *path)
 {
 	return sys_unlinkat(AT_FDCWD, path, 0);
 }
+
+int pthread_create(int (*fn)(void* ), int flag, void* args){
+	return syscall(SYS_clone, fn, flag, args);
+}
